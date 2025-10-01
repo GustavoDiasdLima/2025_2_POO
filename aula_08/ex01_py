@@ -1,0 +1,12 @@
+x = []
+y = list()
+z = x
+print(id(x), type(x))
+print(id(y), type(y))
+print(id(z), type(y))
+x.append(10)
+y.append(20)
+z.append(30)
+print(z[0])
+print(z[1])
+z = [1, 2, 3]
