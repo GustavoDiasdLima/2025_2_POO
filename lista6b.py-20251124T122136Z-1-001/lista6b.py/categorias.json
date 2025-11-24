@@ -1,0 +1,18 @@
+[
+    {
+        "id": 1,
+        "descricao": "Carros"
+    },
+    {
+        "id": 2,
+        "descricao": "Plantas e jardim"
+    },
+    {
+        "id": 4,
+        "descricao": "Alimentos"
+    },
+    {
+        "id": 3,
+        "descricao": "Roupas Infantis"
+    }
+]

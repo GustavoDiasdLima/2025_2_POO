@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "descricao": "camisa",
+        "preco": 25.0,
+        "estoque": 2,
+        "id_categoria": "1"
+    },
+    {
+        "id": 2,
+        "descricao": "babosa",
+        "preco": 30.0,
+        "estoque": 2,
+        "id_categoria": "2"
+    },
+    {
+        "id": 3,
+        "descricao": "orquidea sapatinho",
+        "preco": 40.0,
+        "estoque": 2,
+        "id_categoria": "3"
+    },
+    {
+        "id": 5,
+        "descricao": "orquidea maxillaria tenuifolia dark",
+        "preco": 30.0,
+        "estoque": 2,
+        "id_categoria": "5"
+    }
+]

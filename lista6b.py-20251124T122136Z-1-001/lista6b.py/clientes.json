@@ -1,0 +1,30 @@
+[
+    {
+        "id": 3,
+        "nome": "Gustavo",
+        "email": "@gmail",
+        "fone": "96294646",
+        "senha": "1234"
+    },
+    {
+        "id": 4,
+        "nome": "Miguel",
+        "email": "@miguel",
+        "fone": "99998888",
+        "senha": "1111"
+    },
+    {
+        "id": 8,
+        "nome": "admin2",
+        "email": "carro",
+        "fone": "0000",
+        "senha": "1234"
+    },
+    {
+        "id": 9,
+        "nome": "admin",
+        "email": "admin",
+        "fone": "0000",
+        "senha": "1234"
+    }
+]
