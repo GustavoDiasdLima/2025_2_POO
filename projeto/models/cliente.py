@@ -18,7 +18,9 @@ class Cliente:
     def get_senha(self): return self.__senha
 
     def set_id(self, id): self.__id = id
-    def set_nome(self, nome): self.__nome = nome
+    def set_nome(self, nome):
+        if nome == "": raise ValueError("Nome não pode ser vazio")
+        self.__nome = nome
     def set_email(self, email): self.__email = email
     def set_fone(self, fone): self.__fone = fone
     def set_senha(self, senha): self.__senha = senha
@@ -62,9 +64,9 @@ class ClienteDAO:             # classe estática -> não tem instância
             cls.objetos.append(obj)
             cls.salvar()
     @classmethod
-    def excluir(cls, obj):
+    def excluir(cls, id):
         # procurar o objeto que tem o id dado por obj.id
-        aux = cls.listar_id(obj.get_id())
+        aux = cls.listar_id(id)
         if aux != None:
             cls.objetos.remove(aux)
             cls.salvar()

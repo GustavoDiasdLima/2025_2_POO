@@ -1,30 +1,33 @@
 import json
 
 class Venda:
-    def __init__(self, id, data, carrinho, total, id_cliente):
-        self.set_id(id)          
-        self.set_data(data)      
-        self.set_carrinho(carrinho)      
-        self.set_total(total)      
-        self.set_id_cliente(id_cliente)      
+    def __init__(self, id, data, carrinho, itens, total, id_venda, id_cliente):
+        self.id = id          
+        self.data = data
+        self.itens = itens    
+        self.carrinho = carrinho      
+        self.total = total  
+        self.id_venda = id_venda    
+        self.id_cliente = id_cliente      
+
 
     def __str__(self):
-        return f"{self.__id} - {self.__data} - {self.__carrinho} - {self.__total}" 
+        return f"{self.id} - {self.data} - {self.carrinho} - {self.total}" 
 
-    def get_id(self): return self.__id
-    def get_data(self): return self.__data
-    def get_carrinho(self): return self.__carrinho
-    def get_total(self): return self.__total
-    def get_id_cliente(self): return self.__id_cliente
+    def get_id(self): return self.id
+    def get_data(self): return self.data
+    def get_carrinho(self): return self.carrinho
+    def get_total(self): return self.total
+    def get_id_cliente(self): return self.id_cliente
 
-    def set_id(self, id): self.__id = id
-    def set_data(self, data): self.__data = data
-    def set_carrinho(self, carrinho): self.__carrinho = carrinho
-    def set_total(self, total): self.__total = total
-    def set_id_cliente(self, id_cliente): self.__id_cliente = id_cliente
+    def set_id(self, id): self.id = id
+    def set_data(self, data): self.data = data
+    def set_carrinho(self, carrinho): self.carrinho = carrinho
+    def set_total(self, total): self.total = total
+    def set_id_cliente(self, id_cliente): self.id_cliente = id_cliente
 
     def to_json(self):
-        return { "id" : self.__id, "data" : self.__data, "carrinho" : self.__carrinho, "total" : self.__total, "id_cliente" : self.__id_cliente }
+        return { "id" : self.id, "data" : self.data, "carrinho" : self.carrinho, "total" : self.total, "id_cliente" : self.id_cliente }
 
     @staticmethod
     def from_json(dic):
@@ -77,7 +80,6 @@ class VendaDAO:               # classe estática -> não tem instância
             if v.get_id_cliente() == id_cliente:
                 lista.append(v)
         return lista
-
     @classmethod
     def salvar(cls):
         with open("vendas.json", mode="w") as arquivo:

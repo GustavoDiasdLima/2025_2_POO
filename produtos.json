@@ -1,0 +1,65 @@
+[
+    {
+        "id": 4,
+        "descricao": "Pitanga Preta",
+        "preco": 200.0,
+        "estoque": 4,
+        "id_categoria": "1"
+    },
+    {
+        "id": 5,
+        "descricao": "Orqu\u00eddea Brassia Verrucosa",
+        "preco": 38.0,
+        "estoque": 9,
+        "id_categoria": "1"
+    },
+    {
+        "id": 6,
+        "descricao": "Foccacia ",
+        "preco": 20.0,
+        "estoque": 9,
+        "id_categoria": "2"
+    },
+    {
+        "id": 9,
+        "descricao": "Pizza Fil\u00e9 com Fritas Grande",
+        "preco": 60.0,
+        "estoque": 9,
+        "id_categoria": "2"
+    },
+    {
+        "id": 2,
+        "descricao": "Jabuticabeira H\u00edbrida",
+        "preco": 353.5,
+        "estoque": 4,
+        "id_categoria": "1"
+    },
+    {
+        "id": 3,
+        "descricao": "Grumixama Amarela",
+        "preco": 400.0,
+        "estoque": 3,
+        "id_categoria": "1"
+    },
+    {
+        "id": 11,
+        "descricao": "Camisa Polo",
+        "preco": 18.0,
+        "estoque": 100,
+        "id_categoria": "3"
+    },
+    {
+        "id": 8,
+        "descricao": "Chocotone",
+        "preco": 30.3,
+        "estoque": 19,
+        "id_categoria": "2"
+    },
+    {
+        "id": 10,
+        "descricao": "Tapioca de Frango",
+        "preco": 3.5,
+        "estoque": 28,
+        "id_categoria": "2"
+    }
+]

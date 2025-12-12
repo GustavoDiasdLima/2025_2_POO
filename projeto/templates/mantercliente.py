@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
-from views import View
 import time
-from models.cliente import Cliente, ClienteDAO
+from views import View
+from models.cliente import Cliente
+from models.cliente import ClienteDAO
 
 class ManterClienteUI:
     def main():
@@ -13,10 +14,9 @@ class ManterClienteUI:
         with tab3: ManterClienteUI.atualizar()
         with tab4: ManterClienteUI.excluir()
 
-
     def listar():
         clientes = View.cliente_listar()
-        #for cliente in clientes: st.write(cliente)
+    
         if len(clientes) == 0: st.write("Nenhum cliente cadastrado")
         else:
             list_dic = []
@@ -30,8 +30,11 @@ class ManterClienteUI:
         fone = st.text_input("Informe o fone")
         senha = st.text_input("Informe a senha", type="password")
         if st.button("Inserir"):
-            View.cliente_inserir(nome, email, fone, senha)
-            st.success("Cliente inserido com sucesso")
+            try:
+                View.cliente_inserir(nome, email, fone, senha)
+                st.success("Cliente inserido com sucesso")
+            except Exception as erro:
+                st.error(erro)
             time.sleep(2)
             st.rerun()
 
@@ -50,6 +53,7 @@ class ManterClienteUI:
                 st.success("Cliente atualizado com sucesso")
                 time.sleep(2)
                 st.rerun()
+
     def excluir():
         clientes = View.cliente_listar()
         if len(clientes) == 0: st.write("Nenhum cliente cadastrado")

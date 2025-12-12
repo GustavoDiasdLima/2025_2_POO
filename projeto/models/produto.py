@@ -30,7 +30,7 @@ class Produto:
     def from_json(dic):
         return Produto(dic["id"], dic["descricao"], float(dic["preco"]), int(dic["estoque"]), dic["id_categoria"])
 
-    def reajustar(self, percentual): self.__preco * (1 + percentual)
+    def reajustar(self, percentual): self.__preco * (1 + percentual/100)
 
 
 class ProdutoDAO:             # classe estática -> não tem instância

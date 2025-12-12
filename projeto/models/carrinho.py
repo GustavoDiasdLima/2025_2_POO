@@ -34,6 +34,12 @@ class Carrinho:
     def from_json(dic):
         return Carrinho(dic["id"], dic["id_cliente"], dic["id_produto"])
 
+    @staticmethod
+    def listar_por_cliente(cls, id_cliente):
+        lista = []
+        if obj.get_id_cliente() == id_cliente:
+            lista.append(obj)
+        return lista
 
 class CarrinhoDAO:
     objetos = []
@@ -61,16 +67,6 @@ class CarrinhoDAO:
             if obj.get_id() == id:
                 return obj
         return None
-
-
-    @classmethod
-    def listar_por_cliente(cls, id_cliente):
-        cls.abrir()
-        lista = []
-        for obj in cls.objetos:
-            if obj.get_id_cliente() == id_cliente:
-                lista.append(obj)
-        return lista
 
     @classmethod
     def excluir(cls, obj):

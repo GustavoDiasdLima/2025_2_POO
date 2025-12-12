@@ -1,3 +1,4 @@
+from models.cliente import Cliente
 class ClienteDAO:
     _clientes = []
     _id_auto = 1
