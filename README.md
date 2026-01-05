@@ -9,6 +9,6 @@
   <img align="center" alt="Gustavocss3" height="30" width="40" <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg" />
 </div>
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=1C2BD7&text=%20%&fontColor=FFFFFF&descAlign=20&descAlignY=18&fontAlign=52&textBg=false&fontSize=68&fontAlignY=64&reversal=false&section=footer">
+<img src="https://capsule-render.vercel.app/api?type=waving&height=200&color=FFC222&text=%20%&fontColor=FFFFFF&descAlign=20&descAlignY=18&fontAlign=52&textBg=false&fontSize=68&fontAlignY=64&reversal=false&section=footer">
 
 ##
