@@ -3,7 +3,15 @@ from models.cliente import ClienteDAO
 from models.categoria import Categoria, CategoriaDAO
 from models.produto import Produto, ProdutoDAO
 from models.venda import Venda, VendaDAO
+from models.vendaitem import VendaItemDAO
 from models.carrinho import Carrinho, CarrinhoDAO
+from models.promocao import Promocao, PromocaoDAO
+from models.entrega import EntregaDAO
+from models.feedback import FeedbackDAO
+from models.wishlist import WishlistDAO
+
+from models.dao import DAO
+
 class View:
 
     @staticmethod
@@ -26,21 +34,21 @@ class View:
             if obj.get_email() == email:
                 raise ValueError("E-mail repetido")
         c = Cliente(0, nome, email, fone, senha)
-        ClienteDAO().inserir(c)
+        ClienteDAO.inserir(c)
         return c   
     @staticmethod
     def cliente_listar():
-        return ClienteDAO().listar()
+        return ClienteDAO.listar()
     @staticmethod
     def cliente_listar_id(id):
-        return ClienteDAO().listar_id(id)
+        return ClienteDAO.listar_id(id)
     @staticmethod
     def cliente_atualizar(id, nome, email, fone, senha):
         c = Cliente(id, nome, email, fone, senha)
-        ClienteDAO().atualizar(c)
+        ClienteDAO.atualizar(c)
     @staticmethod
     def cliente_excluir(id):
-        ClienteDAO().excluir(id)
+        ClienteDAO.excluir(id)
     @staticmethod
     def categoria_inserir(descricao):
         c = Categoria(0, descricao)
@@ -94,13 +102,15 @@ class View:
     def carrinho_comprar(id_cliente):
         # o DAO faz a compra: cria vendas, limpa carrinho etc.
         return CarrinhoDAO.comprar(id_cliente)
-    
     @staticmethod
     def venda_listar(id_cliente):
         return VendaDAO.listar_por_cliente(id_cliente)
     @staticmethod
     def venda_listar_todas():
         return VendaDAO.listar()
+    @staticmethod
+    def vendaitem_listar_por_venda(id_venda):
+        return VendaItemDAO.listar_por_venda(id_venda)
     @classmethod
     def listar_vendas_admin(cls):
         print("Todas as vendas:")
@@ -113,6 +123,28 @@ class View:
     def reajustar(percentual):
         for obj in ProdutoDAO.listar():
             obj.reajustar(percentual)
-            
+    @staticmethod
+    def promocao_criar(id_produto, desconto):
+        p = Promocao(
+            PromocaoDAO.proximo_id(),
+            id_produto,
+            desconto,
+            True
+        )
+        PromocaoDAO.inserir(p)
 
+    @staticmethod
+    def promocao_buscar_por_produto(id_produto):
+        return PromocaoDAO.buscar_por_produto(id_produto)
+            
+    @staticmethod
+    def entrega_buscar_por_venda(id_venda):
+        return EntregaDAO.listar_por_venda(id_venda)
+    
+    @staticmethod
+    def feedback_listar_por_produto(id_produto):
+        return FeedbackDAO.listar_por_produto(id_produto)
+    @staticmethod
+    def wishlist_listar(id_cliente):
+        return WishlistDAO.listar_por_cliente(id_cliente)
         

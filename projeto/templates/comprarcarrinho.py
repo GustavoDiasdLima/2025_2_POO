@@ -1,9 +1,12 @@
 import streamlit as st
 import pandas as pd
 import time
-from datetime import datetime
-from views import View
+from datetime import date
+from models.entrega import Entrega, EntregaDAO
 from models.venda import Venda, VendaDAO
+from models.promocao import PromocaoDAO
+from models.vendaitem import VendaItem, VendaItemDAO
+
 
 class ComprarCarrinhoUI:
 
@@ -25,6 +28,7 @@ class ComprarCarrinhoUI:
 
         dados = []
         total = 0
+
         for item in carrinho:
             produto = item["produto"]
             qtd = item["qtd"]
@@ -44,50 +48,67 @@ class ComprarCarrinhoUI:
         if st.button("Finalizar Compra"):
             ComprarCarrinhoUI.finalizar_compra(total)
 
+
     @staticmethod
     def finalizar_compra(total):
         carrinho = st.session_state.carrinho
 
         if not carrinho:
-            st.warning("Carrinho vazio! Não é possível finalizar a compra.")
+            st.warning("Carrinho vazio!")
             return
 
-    
+        id_cliente = st.session_state.get("cliente_id", 0)
+        id_venda = VendaDAO.proximo_id()
+        data = date.today().strftime("%d/%m/%Y")
+
+  
+        venda = Venda(
+            id_venda,
+            data,
+            total,
+            id_cliente
+        )
+        VendaDAO.inserir(venda)
+
+  
         for item in carrinho:
             produto = item["produto"]
             qtd = item["qtd"]
-            novo_estoque = produto.get_estoque() - qtd
-            View.produto_atualizar(
-                produto.get_id(),
-                produto.get_descricao(),
+
+            vi = VendaItem(
+                VendaItemDAO.proximo_id(),
+                qtd,
                 produto.get_preco(),
-                novo_estoque,
-                produto.get_id_categoria()
+                id_venda,
+                produto.get_id()
             )
+            VendaItemDAO.inserir(vi)
 
+   
+        endereco = st.text_input("Digite o seu endereço para entrega:")
 
-        lista_itens = [{"produto": item["produto"].get_descricao(), "qtd": item["qtd"]} for item in carrinho]
-        lista_carrinho = [item["produto"].get_id() for item in carrinho]  # apenas os IDs do produto
-
-      
-        id_cliente = st.session_state.get("cliente_id", 0)  # se não tiver, coloca 0
-
-     
-        venda = Venda(
-            id=0,
-            data=datetime.now().strftime("%d/%m/%Y %H:%M"),
-            carrinho=lista_carrinho,
-            itens=lista_itens,
-            total=total,
-            id_venda=0,
-            id_cliente=id_cliente
-        )
-
-
-        VendaDAO.inserir(venda)
+        if not endereco:
+            st.warning("Insira o endereço para concluir a compra.")
+            return
 
     
+        from datetime import datetime, timedelta
+        previsao = (datetime.now() + timedelta(minutes=30)).strftime("%d/%m/%Y %H:%M")
+
+    
+        entrega = Entrega(
+            EntregaDAO.proximo_id(),
+            id_venda,
+            endereco,     
+            "Preparando",
+            previsao    
+        )
+        EntregaDAO.inserir(entrega)
+
+   
         st.session_state.carrinho = []
 
-        st.success("Compra realizada com sucesso!")
+        st.success("Compra realizada com sucesso! 🛒")
+        st.info(f"Endereço: {endereco}\nPrevisão de entrega: {previsao}")
         time.sleep(1)
+        st.rerun()

@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "nota": 5,
+        "comentario": "Gostoso demais",
+        "data": "25/01/2026",
+        "id_cliente": 2
+    },
+    {
+        "id": 2,
+        "nota": 5,
+        "comentario": "Linda",
+        "data": "25/01/2026",
+        "id_cliente": 2
+    },
+    {
+        "id": 3,
+        "nota": 1,
+        "comentario": "Gostoso",
+        "data": "25/01/2026",
+        "id_cliente": 2
+    },
+    {
+        "id": 4,
+        "nota": 1,
+        "comentario": "Gostoso demais\n",
+        "data": "25/01/2026",
+        "id_cliente": 2
+    }
+]

@@ -1,4 +1,7 @@
 import json
+from models.dao import DAO
+
+
 
 class Produto:
     def __init__(self, id, descricao, preco, estoque, id_categoria):
@@ -33,43 +36,24 @@ class Produto:
     def reajustar(self, percentual): self.__preco * (1 + percentual/100)
 
 
-class ProdutoDAO:             # classe estática -> não tem instância
-    objetos = []              # atributo da classe
-    @classmethod              # classe DAO não vai ter instância
-    def inserir(cls, obj):
+class ProdutoDAO(DAO):             # classe estática -> não tem instância
+
+    @classmethod
+    def listar_id(cls, id_produto):
         cls.abrir()
-        id = 0
-        for aux in cls.objetos:
-            if aux.get_id() > id: id = aux.get_id()
-        obj.set_id(id + 1)
-        cls.objetos.append(obj)
-        cls.salvar()
+        for p in cls.objetos:
+            if p.get_id() == id_produto:
+                return p
+        return None
+
     @classmethod
-    def listar(cls):
+    def listar_descricao(cls, descricao):
         cls.abrir()
-        return cls.objetos
-    @classmethod
-    def listar_id(cls, id):
-        cls.abrir()
-        for obj in cls.objetos:
-            if obj.get_id() == id: return obj
-        return None    
-    @classmethod
-    def atualizar(cls, obj):
-        # procurar o objeto que tem o id dado por obj.id
-        aux = cls.listar_id(obj.get_id())
-        if aux != None:
-            # remove o objeto antigo aux e insere o novo obj
-            cls.objetos.remove(aux)
-            cls.objetos.append(obj)
-            cls.salvar()
-    @classmethod
-    def excluir(cls, obj):
-        # procurar o objeto que tem o id dado por obj.id
-        aux = cls.listar_id(obj.get_id())
-        if aux != None:
-            cls.objetos.remove(aux)
-            cls.salvar()
+        for p in cls.objetos:
+            if p.get_descricao() == descricao:
+                return p
+        return None
+
     @classmethod
     def salvar(cls):
         with open("produtos.json", mode="w") as arquivo:

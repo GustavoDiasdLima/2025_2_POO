@@ -1,6 +1,7 @@
 from projeto import Cliente, ClienteDAO
 from projeto import Categoria, CategoriaDAO
 from projeto import Venda, VendaDAO
+
 from views import View
 
 class UI: # classe estática -> não tem instância
@@ -17,7 +18,7 @@ class UI: # classe estática -> não tem instância
         print("Clientes   : 1-Inserir, 2-Listar, 3-Atualizar, 4-Excluir")
         print("Categorias : 5-Inserir, 6-Listar, 7-Atualizar, 8-Excluir")
         print("Produtos   : 9-Inserir, 10-Listar, 11-Atualizar, 12-Excluir")
-        print("13-Listar Vendas, 14-Sair")
+        print("13-Listar Vendas, 14-Cadastrar Promoção,16-Sair")
         op = int(input("Informe uma opção: "))           
         if op == 1: UI.cliente_inserir()
         if op == 2: UI.cliente_listar()
@@ -32,21 +33,24 @@ class UI: # classe estática -> não tem instância
         if op == 11: UI.produto_atualizar()
         if op == 12: UI.produto_excluir()
         if op == 13: UI.listar_vendas_admin()
-        if op == 14: UI.usuario_sair()
+        if op == 14: UI.PromocoesAdminUI()
+        if op == 16: UI.usuario_sair()
 
     def menu_cliente():
         print("1-Listar produtos")
         print("2-Inserir produto no carrinho")
         print("3-Visualizar carrinho")
         print("4-Comprar carrinho")
-        print("5-Indisponível :()")
+        print("5-Minhas Entregas")
+        print("5-Avaliar Produto")
         print("9-Sair")
         op = int(input("Informe uma opção: "))           
         if op == 1: UI.listar_produtos()
         if op == 2: UI.inserir_produto_carrinho()
         if op == 3: UI.visualizar_carrinho()
         if op == 4: UI.comprar_carrinho()
-        if op == 5: pass
+        if op == 5: UI.MinhasentregasUI()
+        if op == 6: UI.FeedbackUI()
         if op == 9: UI.usuario_sair()
 
     @classmethod
@@ -183,7 +187,7 @@ class UI: # classe estática -> não tem instância
             print("Você precisa estar logado.")
             return
         print("Seu carrinho:")
-        lista = View.carrinho_listar(cls.__usuario["id"])
+        lista = View.carrinho_listar(id_cliente)
         if len(lista) == 0:
             print("Carrinho vazio.")
         else:

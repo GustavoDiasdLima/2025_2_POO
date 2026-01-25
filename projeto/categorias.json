@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "descricao": "Plantas"
+    },
+    {
+        "id": 2,
+        "descricao": "Comidas"
+    },
+    {
+        "id": 3,
+        "descricao": "Instrumento"
+    }
+]

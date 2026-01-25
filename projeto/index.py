@@ -11,6 +11,11 @@ from templates.inserirprodcarrinho import InserirProdutoCarrinhoUI
 from templates.comprarcarrinho import ComprarCarrinhoUI
 from templates.login import LoginUI
 from templates.abrir import AbrirUI
+from templates.feedback import FeedbackUI
+from templates.entrega import EntregaUI
+from templates.promocoes_admin import PromocaoUI
+from templates.wishlist import WishlistUI
+
 from views import View
 
 class IndexUI:
@@ -21,7 +26,8 @@ class IndexUI:
             "Cadastro de Clientes",
             "Cadastro de Produtos",
             "Reajustar Produtos",  
-            "Listar Vendas"
+            "Listar Vendas",
+            "Promoção"
             ])
         #st.session_state["opcao"].append(op)
         if op == "Cadastro de Categorias": ManterCategoriaUI.main()
@@ -29,6 +35,7 @@ class IndexUI:
         if op == "Cadastro de Produtos": ManterProdutoUI.main()
         if op == "Reajustar Produtos": ReajustarProdutoUI.main()
         if op == "Listar Vendas": ListarVendasUI.main()
+        if op == "Promoção": PromocaoUI.main()
 
     @staticmethod
     def menu_visitante():
@@ -47,13 +54,16 @@ class IndexUI:
             "Inserir Produto no Carrinho",
             "Visualizar Carrinho",
             "Comprar o Carrinho",
-            "Listar Minhas Compras"])
+            "Listar Minhas Compras", "Minhas Entregas", "Feedback", "Wishlist"])
                    
         if op == "Listar Produtos": ListarProdutosUI.main()
         if op == "Inserir Produto no Carrinho": InserirProdutoCarrinhoUI.main()
         if op == "Visualizar Carrinho": VisualizarCarrinhoUI.main()
         if op == "Comprar o Carrinho": ComprarCarrinhoUI.main()
         if op == "Listar Minhas Compras": ListarMinhasComprasUI.main()
+        if op == "Minhas Entregas": EntregaUI.main()
+        if op == "Feedback": FeedbackUI.main()
+        if op == "Wishlist": WishlistUI.main()
         return op
 
     @staticmethod

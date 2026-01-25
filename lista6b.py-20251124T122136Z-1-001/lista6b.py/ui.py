@@ -183,7 +183,7 @@ class UI: # classe estática -> não tem instância
             print("Você precisa estar logado.")
             return
         print("Seu carrinho:")
-        lista = View.carrinho_listar(cls.__usuario["id"])
+        lista = View.carrinho_listar(id_cliente)
         if len(lista) == 0:
             print("Carrinho vazio.")
         else:

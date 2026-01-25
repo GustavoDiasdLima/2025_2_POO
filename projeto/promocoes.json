@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "titulo": "Promo\u00e7\u00e3o de Carnaval",
+        "descricao": "TODOS OS PRODUTOS COM - 10% EBAA",
+        "desconto": 10,
+        "data_inicio": "2026-01-26",
+        "data_fim": "2026-02-05"
+    },
+    {
+        "id": 2,
+        "titulo": "PROMO\u00c7\u00c3O DE CARNAVAL",
+        "descricao": "TODOS OS PRODUTOS - 10%",
+        "desconto": 10,
+        "data_inicio": "2026-01-26",
+        "data_fim": "2026-02-05"
+    },
+    {
+        "id": 3,
+        "titulo": "Promo\u00e7\u00e3o de carnaval",
+        "descricao": "Produtos com -10%",
+        "desconto": 10,
+        "data_inicio": "2026-01-26",
+        "data_fim": "2026-02-05"
+    }
+]

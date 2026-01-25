@@ -12,7 +12,7 @@ class Compra:
         for i in self.itens:
             texto += f"\n - {i.produto.get_descricao()} x{i.quantidade} = R${i.get_total():.2f}"
 
-class CompraDAO:
+class CompraDAO(DAO):
     _compras = []
 
     @staticmethod
